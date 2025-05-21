@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JavaScript parentNode</title>
+</head>
+<body>
+    <div id = "parent" name="parent">
+        <h1 class="something">Hello world!</h1>
+    </div>
+    <script>
+        let e = document.getElementById("parent");
+        console.log(e);
+        let ele = document.getElementsByName("parent"); // is give us a list of elements whos name is "parent"
+        for (let index = 0; index < ele.length; index++) {  // we can ittreat over it
+            console.log(ele[index]);
+        }
+        console.log(ele[0]);  // or directly fetch perticuler index element
+        let elements = document.getElementsByTagName("h1"); // is give us a list of elements whos Tag is h1
+        for (let index = 0; index < elements.length; index++) {  // we can ittreat over it
+            console.log(elements[index]);                   
+        }
+        let el = document.getElementsByClassName("something");  // is give us a list of elements whos class name is something
+        for (let index = 0; index < el.length; index++) {
+            console.log(el[index]);
+        }
+        let node = document.querySelector('.something');
+        console.log(node.parentNode);
+    </script>
+</body>
+</html>

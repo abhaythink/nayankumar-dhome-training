@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul id= "status">
+        <li>CREATED</li>
+    </ul>
+
+    <script>
+        let div = document.createElement('div');
+        div.id = "content";
+        div.innerHTML = '<p>create new Element</p>';
+        document.body.prepend(div);
+
+        const status = document.querySelector('#status');
+
+        let li1 = document.createElement('li');
+        li1.textContent = "OK";
+        status.appendChild(li1);
+
+        let li2 = document.createElement('li');
+        li2.textContent = "BAD_REQUEST";
+        status.appendChild(li2);
+
+        const ul = document.querySelector('ul');
+        const p = document.createElement('p');
+        p.innerHTML = 'JS DOM';
+        ul.after(p);
+
+        let list = document.querySelector('#status');
+
+        list.insertAdjacentHTML("beforebegin", "<h3>Status Codes</h3>");
+        list.insertAdjacentHTML("afterbegin", "<li>METHOD_NOT_FOUND</li>");
+        list.insertAdjacentHTML("beforeend", "<li>SERVER_ERROR</li>");
+        list.insertAdjacentHTML("afterend", "<p>HTTP API request enums</p>");
+
+        let li = document.createElement('li');
+        li.textContent = "METHOD_NOT_FOUND, 403";
+
+        list.replaceChild(li, list.firstChild);
+
+        let clonedList = list.cloneNode(true);
+        clonedList.id = "HTTP_STATUS"
+
+        document.body.append(clonedList);
+
+        list.removeChild(list.lastChild);
+
+        let li3 = document.createElement('li');
+        li3.textContent = "REDIRECTED";
+
+        list.insertBefore(li3, list.firstChild);
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+        <p class="first">This is first class element</p>
+    </div>
+
+    <script>
+        let f = document.querySelector('.first');
+        console.log(f.parentNode);
+        console.log(document.getElementsByTagName("body")[0].parentNode);
+        console.log(document.getElementsByTagName("body")[0].childNodes); // gives the list of all child nodes type of any
+        console.log(document.getElementsByTagName("body")[0].firstChild);
+        console.log(document.getElementsByTagName("body")[0].firstElementChild);
+        console.log(document.getElementsByTagName("body")[0].lastChild);
+        console.log(document.getElementsByTagName("body")[0].lastElementChild);
+    </script>
+</body>
+</html>

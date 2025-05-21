@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="menu">
+        <li>Home</li>
+        <li>Products</li>
+        <li class="current">Customer Support</li>
+        <li>Careers</li>
+        <li>Investors</li>
+        <li>News</li>
+        <li>About Us</li>
+    </ul>
+
+    <script>
+        console.log(document.getElementsByClassName("current")[0].nextSibling);
+        console.log(document.getElementById("menu").nextElementSibling);
+        console.log(document.getElementsByTagName("script")[0].previousSibling);
+        console.log(document.getElementById("menu").previousElementSibling); // null becz its a 1st sibling element in that perticuler element
+        let ele = document.querySelector('.current');
+        let prevSibling = ele.previousElementSibling;
+        while(prevSibling) {
+            console.log(prevSibling);
+            prevSibling = prevSibling.previousElementSibling; // move one step back each time
+        }
+
+        let nextSibling = document.querySelector('.current').nextElementSibling;
+        while(nextSibling) {
+            console.log(nextSibling);
+            nextSibling = nextSibling.nextElementSibling; // move one step next each time
+        }
+    </script>
+</body>
+</html>
