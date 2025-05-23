@@ -94,7 +94,7 @@ team.sort(comparedBy('name', true));
 
 console.table(team);
 
-let salarySorted = [...team].sort(comparedBy('salary', true));          // [...team] :: [...] is uded for creates a shallow copy becz .sort() funtion operates on main array so we shold make the copy of it so original array should not affecte from this 
+let salarySorted = [...team].sort(comparedBy('salary', true));          // [...team] :: [...] is use for creates a shallow copy becz .sort() funtion operates on main array so we shold make the copy of it so original array should not affecte from this 
 console.log("Sorted team by salary: ");
 console.table(salarySorted);
 
@@ -169,7 +169,7 @@ console.log("---||----------------------|> recursive function <|----------------
 // Recursive function means the funtion calling it self.
 // Recursive function always have a condition for when get terminet becz withot that codition they calling it self infinitly
 
-let factorialVal = factorial(5);
+let factorialVal = factorial(5);        // We can call recursive function before initilization  becz here Hosting comes in picture
 console.log(factorialVal);        // output: 120
 
 function factorial (num) {
@@ -181,3 +181,79 @@ function factorial (num) {
 
 let factorialValue = factorial(5);
 console.log(factorialValue);        // output: 120
+
+
+console.log("---||----------------------|> Advanced Functions <|----------------------||---");
+
+console.log(factorial.length);      // output: 1    :: becz the factorial function takes 1 parameter
+
+function sayHi(name='Guest') {
+    console.log(`Hii, ${name}`);
+}
+
+sayHi('Nayan');
+console.log(sayHi.length);          // output: 0    :: becz when we assign a defoul value to a parameter then they not consider, they only consider thoes parameters whoes value should be pass throug the call
+
+console.log(sayHi.prototype);       // output: {}
+
+function Item(id, name, count) {
+    this.id = id;
+    this.name = name;
+    this.count = count;
+}
+
+let item = new Item(101, "Mobile", 10);
+
+console.log(item.prototype);    // output: undefined
+
+console.log(Item.prototype);    // output: {}
+
+console.log(Object.getPrototypeOf(item) === Item.prototype);
+
+Item.prototype.describe = function () {
+    console.log("id: " + this.id + " name: " + this.name + " count: " + this.count);
+}
+
+item.describe();
+
+const computer = {
+
+    id: 10,
+    name: 'Lenovo ThinkPad',
+    isOn: false,
+
+    turnOn() {
+        this.isOn = true;
+        return `The ${this.name} is On`;
+    },
+
+    turnOff() {
+        this.isOn = false;
+        return `The ${this.name} is Off`;
+    }
+};
+
+const server = {
+    name: 'Tomcat',
+    isOn: false
+};
+
+let outp = computer.turnOn.apply(server);
+console.log(outp);
+console.log(server.isOn);
+console.log(computer.isOn);
+
+let res = 0;
+
+function sm(...args) {
+    for (let a of args) {
+        if (typeof a !== 'number') {
+            throw new Error('All args must be numbers');
+        } else {
+            res += a;
+        }
+    }
+}
+
+sm(4, 12, 23, 50, 75, 87, 45, 62);
+console.log(res);  // Output: 358
