@@ -22,11 +22,19 @@ public class StudentService {
     }
 
     public Mono<Student> createStudent(Student student) {
-        return repository.save(student);
+        return Mono.just(student)
+                .map(stud -> {
+                    Student newStudent = new Student();
+                    newStudent.setName(stud.getName());
+                    newStudent.setPercentage(stud.getPercentage());
+                    newStudent.setEmail(stud.getEmail());
+                    return newStudent;
+                })
+                .flatMap(repository::save);
     }
 
     public Mono<Student> updateStudent(int id, Student student) {
-        return repository.findById(student.getId())
+        return repository.findById(id)
                 .flatMap(existingStudent -> {
                     existingStudent.setName(student.getName());
                     existingStudent.setEmail(student.getEmail());
