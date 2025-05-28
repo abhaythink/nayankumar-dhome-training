@@ -1,4 +1,4 @@
-package com.nayankumar.demos.ReactiveProgramming.Practice.ReactiveProgrammingPracticeDay1;
+package com.nayankumar.demos.ReactiveProgramming.Practice.ReactiveProgrammingPracticeDay2;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

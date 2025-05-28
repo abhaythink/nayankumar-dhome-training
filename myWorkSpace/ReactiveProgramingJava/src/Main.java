@@ -16,6 +16,8 @@ public class Main {
         processor1.subscribe(processor2);   // Processor extends both the Interfaces Publisher and Subscriber it works like a bridge
         processor2.subscribe(subscriber);
 
+
+
         // publisher -->  processor1 --> processor2 --> subscriber
         // publisher always upstream
         // processor1 is in downstream in terms of publisher
