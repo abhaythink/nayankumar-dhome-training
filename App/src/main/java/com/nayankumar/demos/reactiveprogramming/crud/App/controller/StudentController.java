@@ -2,7 +2,9 @@ package com.nayankumar.demos.reactiveprogramming.crud.App.controller;
 
 import com.nayankumar.demos.reactiveprogramming.crud.App.entity.Student;
 import com.nayankumar.demos.reactiveprogramming.crud.App.service.StudentService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -15,27 +17,27 @@ public class StudentController {
     private StudentService service;
 
     @GetMapping
-    public Flux<Student> getStudents() {
+    public Mono<ResponseEntity<Flux<Student>>> getStudents() {
         return service.getStudents();
     }
 
     @GetMapping("/{id}")
-    public Mono<Student> getUser(@PathVariable int id) {
+    public Mono<ResponseEntity<Student>> getUser(@PathVariable int id) {
         return service.getStudent(id);
     }
 
-    @PostMapping("/create")
-    public Mono<Student> createStudent(@RequestBody Student student) {
+    @PostMapping
+    public Mono<ResponseEntity<Student>> createStudent(@Valid @RequestBody Student student) {
         return service.createStudent(student);
     }
 
-    @PutMapping("/update/{id}")
-    public Mono<Student> updateStudent(@PathVariable int id, @RequestBody Student student) {
+    @PutMapping("/{id}")
+    public Mono<ResponseEntity<Student>> updateStudent(@PathVariable int id, @Valid @RequestBody Student student) {
         return service.updateStudent(id, student);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public Mono<Void> deleteStudent(@PathVariable int id) {
+    @DeleteMapping("{id}")
+    public Mono<ResponseEntity<String>> deleteStudent(@PathVariable int id) {
         return service.deleteStudent(id);
     }
 }
